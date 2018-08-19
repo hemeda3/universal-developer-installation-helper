@@ -1,5 +1,5 @@
 <pre>
-#####1-  add sudoers ( no copy paste in this steps, just type:) ########
+ #####1-  add sudoers ( no copy paste in this steps, just type:) ########
 
 sudo nano /etc/sudoers  # nano is light editor for terminal
 developer   ALL = NOPASSWD: ALL  # developer is your username
@@ -81,19 +81,72 @@ run
 
 ###################################################### FRONT END FINISH ###################################################################################################################################
 #########################################################################################################################################################################################
-============install jdk 8====================
-sudo apt-get install default-jdk -y
-http://ftp.osuosl.org/pub/funtoo/distfiles/oracle-java/
-sudo update-alternatives --config java
+============ install jdk 8==================
+http://www.oracle.com/technetwork/java/javase/downloads/java-archive-javase8-2177648.html
+
+jdk-8u172-linux-x64.tar.gz
+
+
+
+select  jdk-8u172-linux-x64.tar.gz click + download
+
+download in chrome jdk-8u172-linux-x64.tar.gz
+
+RUN:::::
+
+cd /home/"your_user_name"/Downloads  #cd /home/developer/Downloads
+
+sudo mkdir -p /usr/local/java
+
+sudo cp -r ~/Downloads/jdk-8u172-linux-x64.tar.gz /usr/local/java/
+
+cd /usr/local/java
+
+sudo tar xvzf jdk-8u172-linux-x64.tar.gz
+# remove tow tar.gz for free space
+ls #you should see jdk1.8.0_172
+
+sudo nano /etc/profile
+
+****Scroll down to the end of the file using your arrow keys and add the following lines below to the end of your /etc/profile file:****
+#JDK 8
+JAVA_HOME=/usr/local/java/jdk1.8.0_172
+
+JRE_HOME=/usr/local/java/jdk1.8.0_172
+
+PATH=$PATH:$JRE_HOME/bin:$JAVA_HOME/bin
+
+export JAVA_HOME
+
+export JRE_HOME
+
+export PATH
+
+#####
+Then run these commands :::
+sudo update-alternatives --install "/usr/bin/java" "java" "/usr/local/java/jdk1.8.0_172/bin/java" 1 && sudo update-alternatives --install "/usr/bin/javac" "javac" "/usr/local/java/jdk1.8.0_172/bin/javac" 1 && sudo update-alternatives --install "/usr/bin/javaws" "javaws" "/usr/local/java/jdk1.8.0_172/bin/javaws" 1 && sudo update-alternatives --set java /usr/local/java/jdk1.8.0_172/bin/java && sudo update-alternatives --set javac /usr/local/java/jdk1.8.0_172/bin/javac && sudo update-alternatives --set javaws /usr/local/java/jdk1.8.0_172/bin/javaws && source /etc/profile 
+ sudo update-alternatives --config java # this optional if you have two JDK ex JDK8,JDK7, and you want to change to  specific version this will make it easy
+
+
+java -version
+
+You should receive a message which displays:
+
+
+java version "1.8.0_172"
+Java(TM) SE Runtime Environment (build 1.8.0_172-b11)
+Java HotSpot(TM) 64-Bit Server VM (build 25.172-b11, mixed mode)
+
+add java home 
+sudo nano /etc/environment
+add to the end of file this line( this line we got from java alternatives command)
+
+JAVA_HOME="/usr/local/java/jdk1.8.0_172/bin/java"
+
+
 =============================================
 ============install jdk 7====================
-http://ftp.osuosl.org/pub/funtoo/distfiles/oracle-java/
 
-download 
- 
-============================== JDK 7  , Another way==========================================
-http://ftp.osuosl.org/pub/funtoo/distfiles/oracle-java/
-or
 
 chrome go to :::::: => http://www.oracle.com/technetwork/java/javase/downloads/java-archive-downloads-javase7-521261.html
 
@@ -178,6 +231,31 @@ run it + it automatically will suggest to create DesktopEntiry for you just pres
 ######################################## INSTALL  GIT SourceTree ######################################################################
 ######################################## INSTALL  GitFlow relase management ######################################################################
 ######################################## INSTALL  Maven ######################################################################
+  mkdir /home/developer/.m2
+  then copy settings.xml from your windows location 
+  sudo nano /home/developer/.m2/settings.xml
+
+  cd /opt/ && sudo wget http://www-eu.apache.org/dist/maven/maven-3/3.3.9/binaries/apache-maven-3.3.9-bin.tar.gz
+sudo tar -xvzf apache-maven-3.3.9-bin.tar.gz && sudo mv apache-maven-3.3.9 maven 
+ 
+Step 4: Setup environment variables
+Next, you will need to setup the environment variables such as M2_HOME, M2, MAVEN_OPTS, and PATH. You can do this by creating a mavenenv.sh file inside of the /etc/profile.d/ directory.
+
+sudo nano ~/.profile
+source ~/.profile
+
+Add the following lines:
+
+export M2_HOME=/opt/maven
+export PATH=${M2_HOME}/bin:${PATH}
+Save and close the file, update its permissions, then load the environment variables with the following command:
+
+Step 5: Verify installation in NEW TERMINAL 
+Once everything has been successfully configured, check the version of the Apache Maven.
+
+mvn --version
+
+  
 ######################################## INSTALL  postman API  ######################################################################
 ######################################## INSTALL  Gradle ######################################################################
 ######################################## INSTALL  Scala ######################################################################
@@ -220,24 +298,6 @@ run it + it automatically will suggest to create DesktopEntiry for you just pres
 
 ================make .sh bash =======================
  
- 
-
-
-########## download Eclipse using firefox ###################
-go to  https://www.google.com/chrome/ and follow screenshots (IdeaXXXX .png)
-
-
-
-
-
-################### more info ##################################
-
-https://www.phusionpassenger.com/library/walkthroughs/deploy/nodejs/aws/apache/oss/install_language_runtime.html
-
-sudo apt-get update
-sudo apt-get install -y curl apt-transport-https ca-certificates && curl --fail -ssL -o setup-nodejs https://deb.nodesource.com/setup_7.x && sudo bash setup-nodejs && sudo apt-get install -y nodejs build-essential
- sudo apt-get install -y curl apt-transport-https ca-certificates && curl --fail -ssL -o setup-nodejs https://deb.nodesource.com/setup_7.x && sudo bash setup-nodejs && sudo apt-get install -y nodejs build-essential
-
  
  
 </pre>
