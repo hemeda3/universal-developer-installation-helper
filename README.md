@@ -1,7 +1,5 @@
-# universal-developer-installation-helper
-
+<pre>
 #####1-  add sudoers ( no copy paste in this steps, just type:) ########
-
 
 sudo nano /etc/sudoers  # nano is light editor for terminal
 developer   ALL = NOPASSWD: ALL  # developer is your username
@@ -25,7 +23,7 @@ logout or restart
  
 you should see new icon in your desktop looks like hardisk with name sf_new 
 you should  be able to doubleclick on it and you should be able to see all files and folders inside it, which shared from Windows  **
-####3- go to your shared folder in windows and import XXX ssl  certificate (XXXXCERTIFATE.crt) you got from me by Email,  => AhmedYousri.SalamaMohammed@Td.com
+####3- go to your shared folder in windows and import TD ssl  certificate (TDBankGroupSHA2InternalBrowsingRootCertificate.crt) you got from me by Email,  => AhmedYousri.SalamaMohammed@Td.com
 ####4- import ssl to firefox  ############
 1- open firefox by click on your left side bar in ubuntu
 2- in firefox press ctrl + t 
@@ -34,7 +32,7 @@ you should  be able to doubleclick on it and you should be able to see all files
 5- select Authority tab 
 6- press import 
 7- Go to share folder in your desktop **
-8- select your  ssl with name :  XXXXXInternalBrowsingRootCertificate.crt and press OK/Import
+8- select your TD ssl with name :  TDBankGroupSHA2InternalBrowsingRootCertificate.crt and press OK/Import
 9- will display  your options, select all and press OK
 10- then you can access google
 
@@ -170,13 +168,11 @@ Java HotSpot(TM) 64-Bit Server VM (build 24.80-b11, mixed mode)
 https://www.jetbrains.com/idea/download/download-thanks.html?platform=linux&code=IIC
 automatically will download ideaIC-2018.2.1.tar.gz # go to break
 RUN ::::
-cd /home/"your_user_name"/Downloads  # ex.    cd /home/developer/Downloads
 
-sudo mkdir -p /opt/Idea
+sudo mkdir -p /opt/Idea && sudo  tar xf ~/Downloads/ideaIC-2018*.tar.gz -C /opt/Idea && sudo chmod +x /opt/Idea/idea*/bin/idea.sh && /opt/Idea/idea*/bin/idea.sh
 
-sudo tar -xvzf ~/Downloads/ideaIC-2018.2.1.tar.gz -C /opt/Idea
-RUN in terminal :::
-sudo ./opt/Idea/bin/Idea.sh
+
+
 run it + it automatically will suggest to create DesktopEntiry for you just press OK
 ######################################## INSTALL  JBOSS 6.4 EA ######################################################################
 ######################################## INSTALL  GIT SourceTree ######################################################################
@@ -244,3 +240,4 @@ sudo apt-get install -y curl apt-transport-https ca-certificates && curl --fail 
 
  
  
+</pre>
